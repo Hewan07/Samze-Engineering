@@ -9,7 +9,7 @@ function Hero() {
       <div className="absolute inset-0 bg-black/40"></div> {/* overlay */}
       <div className="relative z-10 flex flex-col justify-center items-center h-full text-white text-center px-6">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Innovative Solar Energy,<br /> Electromechanical, Construction and Water Drilling Solutions
+          Electromechanical, Construction and Water Drilling Solutions
         </h1>
         <p className="text-lg md:text-xl max-w-3xl mb-8">
           Reliable solar panels, inverters, and storage systems across Ethiopia
