@@ -210,13 +210,24 @@ export default function Gallery() {
   const [visibleImages, setVisibleImages] = useState(IMAGES);
   const [transitioning, setTransitioning] = useState(false);
   const [lightbox, setLightbox] = useState(null);
-  const [scrollY, setScrollY] = useState(0);
+  const parallaxBgRef = useRef(null);
 
   // Parallax on scroll
   useEffect(() => {
-    const onScroll = () => setScrollY(window.scrollY);
+    let rafId;
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        if (parallaxBgRef.current) {
+          parallaxBgRef.current.style.transform = `translateY(${window.scrollY * 0.38}px)`;
+        }
+      });
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   // Filter with brief exit → enter animation
@@ -277,10 +288,10 @@ export default function Gallery() {
       <section className="relative h-72 md:h-96 lg:h-[420px] overflow-hidden bg-blue-900">
         {/* Parallax background */}
         <div
+          ref={parallaxBgRef}
           className="absolute inset-0 bg-cover bg-center"
           style={{
             backgroundImage: `url('/images/gallery/photo_2026-03-14_22-08-20.jpg')`,
-            transform: `translateY(${scrollY * 0.38}px)`,
             willChange: "transform",
             top: "-10%",
             height: "120%",
@@ -291,12 +302,6 @@ export default function Gallery() {
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
-          <span
-            className="inline-block text-yellow-400 text-xs font-bold uppercase tracking-widest mb-4 px-3 py-1 rounded-full"
-            style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(4px)" }}
-          >
-            Our Work in Action
-          </span>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3">
             Project Gallery
           </h1>
