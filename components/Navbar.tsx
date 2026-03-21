@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -32,32 +33,26 @@ export default function Navbar() {
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled
-          ? "rgba(15, 23, 42, 0.92)"
-          : "transparent",
-        backdropFilter: scrolled ? "blur(16px)" : "none",
-        WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
-        boxShadow: scrolled
-          ? "0 1px 0 rgba(255,255,255,0.05)"
-          : "none",
+        background: scrolled ? "rgba(15, 23, 42, 0.95)" : "transparent",
+        backdropFilter: scrolled ? "blur(12px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(12px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none",
       }}
     >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between">
+      <nav
+        className="max-w-7xl mx-auto px-6 lg:px-8 h-20 flex items-center justify-between"
+        aria-label="Main navigation"
+      >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div
-            className="w-9 h-9 rounded flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-            style={{ background: "linear-gradient(135deg, #f59e0b, #fbbf24)" }}
-          >
-            <Zap size={18} className="text-white" strokeWidth={2.5} />
-          </div>
-          <span
-            className="font-bold text-white tracking-tight"
-            style={{ fontFamily: "var(--font-manrope), sans-serif", fontSize: "1.1rem" }}
-          >
-            SAMZE
-            <span style={{ color: "#f59e0b" }}> Engineering</span>
-          </span>
+        <Link href="/" aria-label="SAMZE Engineering home">
+          <Image
+            src="/logo - Full.png"
+            alt="SAMZE Engineering"
+            width={160}
+            height={44}
+            className="h-10 w-auto object-contain"
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -68,7 +63,8 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-sm font-medium transition-colors duration-200 group"
+                aria-current={isActive ? "page" : undefined}
+                className="relative text-sm font-medium transition-colors duration-200"
                 style={{
                   color: isActive ? "#f59e0b" : "rgba(255,255,255,0.8)",
                   fontFamily: "var(--font-inter), sans-serif",
@@ -76,43 +72,35 @@ export default function Navbar() {
                 }}
               >
                 {link.label}
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px transition-all duration-300"
-                  style={{
-                    background: "#f59e0b",
-                    width: isActive ? "100%" : "0%",
-                  }}
-                />
-                <span
-                  className="absolute -bottom-0.5 left-0 h-px transition-all duration-300 group-hover:w-full"
-                  style={{
-                    background: "#f59e0b",
-                    width: "0%",
-                  }}
-                />
+                {isActive && (
+                  <span
+                    className="absolute -bottom-0.5 left-0 right-0 h-px"
+                    style={{ background: "#f59e0b" }}
+                  />
+                )}
               </Link>
             );
           })}
           <Link
             href="/contact"
-            className="px-5 py-2.5 text-sm font-semibold rounded transition-all duration-300 hover:scale-105"
+            className="px-5 py-2.5 text-sm font-semibold transition-opacity duration-200 hover:opacity-90"
             style={{
-              background: "linear-gradient(135deg, #f59e0b, #fbbf24)",
+              background: "#f59e0b",
               color: "#0f172a",
               fontFamily: "var(--font-inter), sans-serif",
-              boxShadow: "0 0 20px rgba(245, 158, 11, 0.3)",
             }}
           >
-            Get a Quote
+            Get Started
           </Link>
         </div>
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden p-2 text-white rounded transition-colors duration-200"
+          className="lg:hidden p-2 text-white"
           onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-          style={{ background: "rgba(255,255,255,0.08)" }}
+          aria-label={mobileOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileOpen}
+          aria-controls="mobile-menu"
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
@@ -120,21 +108,22 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div
-        className="lg:hidden overflow-hidden transition-all duration-500"
+        id="mobile-menu"
+        className="lg:hidden overflow-hidden transition-all duration-400"
         style={{
           maxHeight: mobileOpen ? "400px" : "0px",
-          background: "rgba(10, 15, 30, 0.97)",
-          backdropFilter: "blur(16px)",
+          background: "rgba(10, 15, 30, 0.98)",
         }}
       >
-        <div className="px-6 py-6 flex flex-col gap-4">
+        <div className="px-6 py-6 flex flex-col gap-1">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-base font-medium py-2 border-b transition-colors duration-200"
+                aria-current={isActive ? "page" : undefined}
+                className="text-base font-medium py-3 border-b"
                 style={{
                   color: isActive ? "#f59e0b" : "rgba(255,255,255,0.75)",
                   borderColor: "rgba(255,255,255,0.06)",
@@ -147,13 +136,10 @@ export default function Navbar() {
           })}
           <Link
             href="/contact"
-            className="mt-2 px-5 py-3 text-sm font-semibold rounded text-center"
-            style={{
-              background: "linear-gradient(135deg, #f59e0b, #fbbf24)",
-              color: "#0f172a",
-            }}
+            className="mt-4 py-3 text-sm font-semibold text-center"
+            style={{ background: "#f59e0b", color: "#0f172a" }}
           >
-            Get a Quote
+            Get Started
           </Link>
         </div>
       </div>

@@ -4,46 +4,16 @@ import { useEffect, useRef, useState } from "react";
 import SectionLabel from "@/components/SectionLabel";
 
 const milestones = [
-  {
-    year: "2020",
-    title: "Company Founded",
-    description:
-      "SAMZE Engineering was established in Addis Ababa with a mission to bring affordable clean energy solutions to Ethiopia.",
-  },
-  {
-    year: "2021",
-    title: "First Major Installation",
-    description:
-      "Completed our first large-scale commercial solar installation, establishing our reputation for quality and reliability.",
-  },
-  {
-    year: "2023",
-    title: "Market Expansion",
-    description:
-      "Expanded operations nationwide, delivering projects across multiple Ethiopian regions and scaling our team significantly.",
-  },
-  {
-    year: "2024",
-    title: "Strategic Partnerships",
-    description:
-      "Formed partnerships with UNHCR, Safaricom, and Alkan Communication, cementing our position in the enterprise market.",
-  },
-  {
-    year: "2025",
-    title: "Industry Recognition",
-    description:
-      "Recognized as a leading solar energy provider in Ethiopia, achieving 40% market share and a 100% satisfaction record.",
-  },
-  {
-    year: "2026",
-    title: "Countrywide Leadership",
-    description:
-      "Targeting full national coverage with expanded service offerings including water drilling and construction solutions.",
-  },
+  { year: "2020", title: "Founding the Company" },
+  { year: "2021", title: "Product Development Begins" },
+  { year: "2023", title: "Market Expansion Initiated" },
+  { year: "2024", title: "Strategic Partnerships Formed" },
+  { year: "2025", title: "Industry Recognition Attained" },
+  { year: "2026", title: "Countrywide Market Domination" },
 ];
 
 export default function TimelineSection() {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLOListElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -56,118 +26,73 @@ export default function TimelineSection() {
   }, []);
 
   return (
-    <section className="py-24 lg:py-32" style={{ background: "#f2f4f6" }}>
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <SectionLabel>Our Journey</SectionLabel>
+    <section className="py-24 lg:py-32" style={{ background: "#ffffff" }} aria-labelledby="timeline-heading">
+      <div className="max-w-2xl mx-auto px-6 lg:px-8">
+        <div className="mb-14">
+          <SectionLabel>Business Milestones</SectionLabel>
           <h2
+            id="timeline-heading"
             className="mt-4 font-bold"
             style={{
               fontFamily: "var(--font-manrope), sans-serif",
-              fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
               letterSpacing: "-0.02em",
               color: "#0f172a",
             }}
           >
-            From Vision to{" "}
-            <span style={{ color: "#f59e0b" }}>Impact</span>
+            Our Journey
           </h2>
         </div>
 
-        <div ref={ref} className="relative">
-          {/* Center line */}
+        <ol ref={ref} className="relative" aria-label="Company milestones">
+          {/* Vertical line */}
           <div
-            className="absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 hidden md:block transition-all duration-1000"
-            style={{
-              background: "linear-gradient(to bottom, #f59e0b, rgba(245,158,11,0.1))",
-              opacity: visible ? 1 : 0,
-            }}
+            className="absolute left-[2.25rem] top-2 bottom-2 w-px"
+            style={{ background: "#e5e7eb" }}
+            aria-hidden="true"
           />
 
-          <div className="space-y-12">
-            {milestones.map((m, i) => {
-              const isLeft = i % 2 === 0;
-              return (
+          {milestones.map((m, i) => (
+            <li
+              key={m.year}
+              className="relative flex gap-8 pb-10 last:pb-0 transition-all duration-600"
+              style={{
+                opacity: visible ? 1 : 0,
+                transform: visible ? "translateY(0)" : "translateY(16px)",
+                transitionDelay: `${i * 80}ms`,
+              }}
+            >
+              {/* Year badge */}
+              <div className="shrink-0 flex flex-col items-center" style={{ width: "4.5rem" }}>
                 <div
-                  key={m.year}
-                  className="relative flex flex-col md:flex-row items-start md:items-center gap-6 transition-all duration-700"
+                  className="w-4 h-4 rounded-full border-2 mt-0.5 relative z-10"
                   style={{
-                    opacity: visible ? 1 : 0,
-                    transform: visible
-                      ? "translateY(0)"
-                      : `translateY(20px)`,
-                    transitionDelay: `${i * 100}ms`,
+                    background: "#f59e0b",
+                    borderColor: "#f59e0b",
                   }}
+                  aria-hidden="true"
+                />
+              </div>
+
+              {/* Content */}
+              <div className="pb-2">
+                <span
+                  className="block text-xs font-bold uppercase tracking-widest mb-1"
+                  style={{ color: "#b45309", fontFamily: "var(--font-inter), sans-serif" }}
                 >
-                  {/* Left side (even) */}
-                  <div
-                    className={`md:w-1/2 md:pr-10 ${isLeft ? "md:text-right" : "md:order-3 md:pl-10 md:pr-0 md:text-left"}`}
-                  >
-                    {isLeft && (
-                      <Card year={m.year} title={m.title} description={m.description} />
-                    )}
-                    {!isLeft && <div className="hidden md:block" />}
-                  </div>
-
-                  {/* Center dot */}
-                  <div className="hidden md:flex md:order-2 items-center justify-center shrink-0">
-                    <div
-                      className="w-4 h-4 rounded-full border-2 border-amber-500 z-10"
-                      style={{ background: "#f59e0b" }}
-                    />
-                  </div>
-
-                  {/* Right side (odd) */}
-                  <div
-                    className={`md:w-1/2 ${isLeft ? "md:order-3 hidden md:block" : "md:pl-10"}`}
-                  >
-                    {!isLeft && (
-                      <Card year={m.year} title={m.title} description={m.description} />
-                    )}
-                    {isLeft && <div className="hidden md:block" />}
-                  </div>
-
-                  {/* Mobile card */}
-                  <div className="md:hidden w-full pl-6" style={{ borderLeft: "2px solid #f59e0b" }}>
-                    <Card year={m.year} title={m.title} description={m.description} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+                  {m.year}
+                </span>
+                <p
+                  className="font-semibold text-base"
+                  style={{ color: "#0f172a", fontFamily: "var(--font-manrope), sans-serif" }}
+                >
+                  {m.title}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
-  );
-}
-
-function Card({ year, title, description }: { year: string; title: string; description: string }) {
-  return (
-    <div
-      className="rounded p-6"
-      style={{
-        background: "#ffffff",
-        boxShadow: "0 4px 16px rgba(15,23,42,0.06)",
-      }}
-    >
-      <span
-        className="text-xs font-bold uppercase tracking-widest mb-2 block"
-        style={{ color: "#f59e0b", fontFamily: "var(--font-inter), sans-serif" }}
-      >
-        {year}
-      </span>
-      <h4
-        className="font-bold mb-2"
-        style={{ fontFamily: "var(--font-manrope), sans-serif", color: "#0f172a" }}
-      >
-        {title}
-      </h4>
-      <p
-        className="text-sm leading-relaxed"
-        style={{ color: "#6b7280", fontFamily: "var(--font-inter), sans-serif" }}
-      >
-        {description}
-      </p>
-    </div>
   );
 }
