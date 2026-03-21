@@ -90,7 +90,7 @@ export default function GalleryTeaser() {
             <Link
               key={item.title}
               href="/gallery"
-              className="group relative overflow-hidden rounded aspect-[4/3] block transition-all duration-700"
+              className="group relative overflow-hidden rounded aspect-4/3 block transition-all duration-700"
               style={{
                 opacity: visible ? 1 : 0,
                 transform: visible ? "translateY(0)" : "translateY(24px)",
