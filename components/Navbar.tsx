@@ -46,11 +46,11 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" aria-label="SAMZE Engineering home">
           <Image
-            src="/logo - Full.png"
+            src="/logo_dark.png"
             alt="SAMZE Engineering"
-            width={160}
-            height={44}
-            className="h-10 w-auto object-contain"
+            width={220}
+            height={62}
+            className="h-16 w-auto object-contain"
             priority
           />
         </Link>

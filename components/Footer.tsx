@@ -24,7 +24,7 @@ export default function Footer() {
           <div>
             <Link href="/" aria-label="SAMZE Engineering home">
               <Image
-                src="/logo - Full.png"
+                src="/logo_dark.png"
                 alt="SAMZE Engineering"
                 width={160}
                 height={44}
