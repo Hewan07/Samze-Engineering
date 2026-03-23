@@ -1,81 +1,106 @@
-import { FileText } from "lucide-react";
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { ShieldCheck, FileCheck, Droplets, Building2 } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 
-const documents = [
+const credentials = [
   {
-    title: "Business License & Competency Certificate",
-    file: "/resources/Business license and business competency certificate (1).pdf",
+    icon: Building2,
+    title: "Licensed Engineering Firm",
+    description:
+      "Fully licensed business with competency certification to operate across electromechanical, civil, and infrastructure sectors in Ethiopia.",
   },
   {
-    title: "VAT Registration",
-    file: "/resources/SAMZE ENGNERING VAT Registration .pdf",
+    icon: FileCheck,
+    title: "VAT Registered",
+    description:
+      "Registered with the Ethiopian tax authority for Value Added Tax, ensuring full regulatory compliance on all projects.",
   },
   {
-    title: "Company License Renewal (2018)",
-    file: "/resources/Samze Liccens 2018 renew (1).pdf",
-  },
-  {
+    icon: Droplets,
     title: "Water Drilling License",
-    file: "/resources/water licens (1) (1).pdf",
+    description:
+      "Holds a dedicated water drilling license authorizing field operations for community, agricultural, and commercial water access.",
   },
   {
-    title: "Power of Attorney",
-    file: "/resources/Power of Attorney SIGNED_copy.pdf",
+    icon: ShieldCheck,
+    title: "Continuously Renewed",
+    description:
+      "All business licenses, competency certificates, and operational permits are kept current through regular renewals.",
   },
 ];
 
 export default function CredentialsSection() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.2 }
+    );
+    if (ref.current) obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, []);
+
   return (
     <section className="py-20" style={{ background: "#f2f4f6" }} aria-labelledby="credentials-heading">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        <SectionLabel>Legal & Compliance</SectionLabel>
-        <h2
-          id="credentials-heading"
-          className="mt-4 mb-10 font-bold"
-          style={{
-            fontFamily: "var(--font-manrope), sans-serif",
-            fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
-            letterSpacing: "-0.02em",
-            color: "#0f172a",
-          }}
-        >
-          Company Documents
-        </h2>
+      <div ref={ref} className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <SectionLabel>Credentials</SectionLabel>
+          <h2
+            id="credentials-heading"
+            className="mt-4 font-bold"
+            style={{
+              fontFamily: "var(--font-manrope), sans-serif",
+              fontSize: "clamp(1.4rem, 2.5vw, 2rem)",
+              letterSpacing: "-0.02em",
+              color: "#0f172a",
+            }}
+          >
+            Licenses & Certifications
+          </h2>
+        </div>
 
-        <ul className="divide-y" style={{ borderColor: "#e5e7eb" }} role="list">
-          {documents.map((doc) => (
-            <li key={doc.title}>
-              <a
-                href={doc.file}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between gap-4 py-4 group transition-colors duration-200 hover:text-amber-700"
-                style={{ color: "#0f172a" }}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {credentials.map((cred, i) => {
+            const Icon = cred.icon;
+            return (
+              <div
+                key={cred.title}
+                className="flex gap-4 p-6 rounded-lg transition-all duration-600"
+                style={{
+                  background: "#ffffff",
+                  opacity: visible ? 1 : 0,
+                  transform: visible ? "translateY(0)" : "translateY(12px)",
+                  transitionDelay: `${i * 80}ms`,
+                }}
               >
-                <div className="flex items-center gap-3">
-                  <FileText
-                    size={16}
-                    className="shrink-0"
-                    style={{ color: "#9ca3af" }}
-                    aria-hidden="true"
-                  />
-                  <span
-                    className="text-sm font-medium"
-                    style={{ fontFamily: "var(--font-inter), sans-serif" }}
-                  >
-                    {doc.title}
-                  </span>
-                </div>
-                <span
-                  className="text-xs font-semibold uppercase tracking-wider shrink-0"
-                  style={{ color: "#b45309", fontFamily: "var(--font-inter), sans-serif" }}
+                <div
+                  className="flex items-center justify-center w-10 h-10 rounded-lg shrink-0"
+                  style={{ background: "#fef3c7" }}
                 >
-                  PDF
-                </span>
-              </a>
-            </li>
-          ))}
-        </ul>
+                  <Icon size={20} style={{ color: "#b45309" }} aria-hidden="true" />
+                </div>
+                <div>
+                  <h3
+                    className="text-sm font-semibold mb-1"
+                    style={{ color: "#0f172a", fontFamily: "var(--font-manrope), sans-serif" }}
+                  >
+                    {cred.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed"
+                    style={{ color: "#4b5563", fontFamily: "var(--font-inter), sans-serif" }}
+                  >
+                    {cred.description}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

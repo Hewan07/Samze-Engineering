@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
-type Category = "All" | "Installations" | "Commercial" | "Residential" | "Equipment";
+type Category = "All" | "Electromechanical" | "Civil Works" | "Field Projects" | "Power Systems";
 
 const projects: {
   src: string;
@@ -12,26 +12,26 @@ const projects: {
   category: Exclude<Category, "All">;
   span: 4 | 2; // out of 6 columns
 }[] = [
-  { src: "/images/gallery/photo_2026-03-14_22-08-20.jpg", title: "Commercial Rooftop Array", category: "Commercial", span: 4 },
-  { src: "/images/gallery/photo_2026-03-14_22-08-45.jpg", title: "Home Solar System", category: "Residential", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-08-50.jpg", title: "Inverter Installation", category: "Equipment", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-01.jpg", title: "Precision Panel Mounting", category: "Installations", span: 4 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-30.jpg", title: "Office Complex Solar", category: "Commercial", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-34.jpg", title: "Battery Storage Unit", category: "Equipment", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-38.jpg", title: "Villa Solar Project", category: "Residential", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-42.jpg", title: "Industrial Solar Farm", category: "Commercial", span: 4 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-46.jpg", title: "Grid Connection Works", category: "Installations", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-51.jpg", title: "Monitoring Dashboard", category: "Equipment", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-54.jpg", title: "Apartment Block Install", category: "Commercial", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-09-58.jpg", title: "Warehouse Rooftop", category: "Commercial", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-10-02.jpg", title: "Cable Management", category: "Equipment", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-10-05.jpg", title: "Panel Array Configuration", category: "Installations", span: 4 },
-  { src: "/images/gallery/photo_2026-03-14_22-10-10.jpg", title: "Eco Home Project", category: "Residential", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-10-14.jpg", title: "School Energy Project", category: "Commercial", span: 2 },
-  { src: "/images/gallery/photo_2026-03-14_22-10-18.jpg", title: "Project Handover", category: "Residential", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-08-20.jpg", title: "Remote Field Installation", category: "Field Projects", span: 4 },
+  { src: "/images/gallery/photo_2026-03-14_22-08-45.jpg", title: "Steel Structure Assembly", category: "Civil Works", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-08-50.jpg", title: "Power Distribution Setup", category: "Power Systems", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-01.jpg", title: "Mounting and Alignment Work", category: "Electromechanical", span: 4 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-30.jpg", title: "Site Base and Support Works", category: "Civil Works", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-34.jpg", title: "Under-Structure Routing", category: "Electromechanical", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-38.jpg", title: "Field Infrastructure Progress", category: "Field Projects", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-42.jpg", title: "Large-Scale Site Deployment", category: "Field Projects", span: 4 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-46.jpg", title: "Equipment Integration Works", category: "Electromechanical", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-51.jpg", title: "Installed Equipment Overview", category: "Power Systems", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-54.jpg", title: "On-Site Delivery Progress", category: "Field Projects", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-09-58.jpg", title: "Expanded Project Footprint", category: "Field Projects", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-10-02.jpg", title: "Control Panel Installation", category: "Power Systems", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-10-05.jpg", title: "Full Array Structure Works", category: "Electromechanical", span: 4 },
+  { src: "/images/gallery/photo_2026-03-14_22-10-10.jpg", title: "Commissioning Progress", category: "Field Projects", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-10-14.jpg", title: "Site Team Coordination", category: "Civil Works", span: 2 },
+  { src: "/images/gallery/photo_2026-03-14_22-10-18.jpg", title: "Completed Installation View", category: "Field Projects", span: 2 },
 ];
 
-const categories: Category[] = ["All", "Installations", "Commercial", "Residential", "Equipment"];
+const categories: Category[] = ["All", "Electromechanical", "Civil Works", "Field Projects", "Power Systems"];
 
 export default function GalleryGrid() {
   const [active, setActive] = useState<Category>("All");
@@ -41,10 +41,10 @@ export default function GalleryGrid() {
 
   const closeLightbox = useCallback(() => setLightbox(null), []);
   const prevImage = useCallback(() => {
-    setLightbox((i) => (i !== null ? (i === 0 ? filtered.length - 1 : i - 1) : null));
+    setLightbox((i: number | null) => (i !== null ? (i === 0 ? filtered.length - 1 : i - 1) : null));
   }, [filtered.length]);
   const nextImage = useCallback(() => {
-    setLightbox((i) => (i !== null ? (i === filtered.length - 1 ? 0 : i + 1) : null));
+    setLightbox((i: number | null) => (i !== null ? (i === filtered.length - 1 ? 0 : i + 1) : null));
   }, [filtered.length]);
 
   useEffect(() => {
@@ -87,19 +87,14 @@ export default function GalleryGrid() {
           ))}
         </div>
 
-        {/* Bento grid — 6 columns, 240px rows */}
-        <div
-          className="grid gap-3"
-          style={{
-            gridTemplateColumns: "repeat(6, 1fr)",
-            gridAutoRows: "240px",
-          }}
-        >
+        {/* Bento grid — 2 cols mobile, 6 cols desktop */}
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-3" style={{ gridAutoRows: "240px" }}>
           {filtered.map((item, i) => (
             <button
               key={item.src}
-              className="group relative overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500"
-              style={{ gridColumn: `span ${item.span}` }}
+              className={`group relative overflow-hidden rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-500 ${
+                item.span === 4 ? "col-span-2 md:col-span-4" : "col-span-1 md:col-span-2"
+              }`}
               onClick={() => setLightbox(i)}
               aria-label={`View ${item.title}`}
             >
@@ -107,7 +102,7 @@ export default function GalleryGrid() {
                 src={item.src}
                 alt={item.title}
                 fill
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={item.span === 4 ? "(max-width: 768px) 100vw, 66vw" : "(max-width: 768px) 50vw, 33vw"}
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               {/* Caption on hover */}

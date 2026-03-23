@@ -5,7 +5,7 @@ import ContactSection from "@/components/contact/ContactSection";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with SAMZE Engineering for a free consultation and quote on solar energy solutions across Ethiopia.",
+    "Get in touch with SAMZE Engineering for project consultations and quotes on electromechanical, civil, water drilling, and firefighting works.",
 };
 
 export default function ContactPage() {
@@ -13,7 +13,7 @@ export default function ContactPage() {
     <>
       <PageHero
         title="Get In Touch"
-        subtitle="Ready to start your solar journey? Our team is standing by to answer questions and provide a free consultation."
+        subtitle="Tell us about your project and our team will help with the next steps, timelines, and tailored support."
         bgImage="/images/gallery/photo_2026-03-14_22-10-14.jpg"
         breadcrumb="Contact"
       />

@@ -86,7 +86,8 @@ export default function HeroSection() {
               animationFillMode: "forwards",
             }}
           >
-            Reliable solar panels, inverters, and storage systems across Ethiopia.
+            Reliable electromechanical, civil, firefighting, water drilling,
+            and infrastructure delivery for projects across Ethiopia.
           </p>
 
           <div

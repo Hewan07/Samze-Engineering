@@ -38,6 +38,19 @@ body {
   animation: scroll-bounce 1.5s ease-in-out infinite;
 }
 
+@keyframes partner-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.partner-marquee-track {
+  animation: partner-marquee 28s linear infinite;
+}
+
+.partner-marquee:hover .partner-marquee-track {
+  animation-play-state: paused;
+}
+
 .section-label {
   font-size: 0.7rem;
   font-weight: 700;

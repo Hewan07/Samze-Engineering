@@ -8,30 +8,30 @@ const steps = [
   {
     number: "01",
     icon: MessageSquare,
-    title: "Free Consultation",
+    title: "Project Consultation",
     description:
-      "We start with a detailed discussion of your energy needs, site conditions, and budget to design the perfect solution.",
+      "We begin by understanding the scope, site conditions, timelines, and operational requirements of your project.",
   },
   {
     number: "02",
     icon: Ruler,
-    title: "System Design",
+    title: "Site Review & Planning",
     description:
-      "Our engineers create a custom system design optimized for your location, consumption patterns, and growth plans.",
+      "Our team reviews technical needs, field constraints, and delivery priorities before mobilization begins.",
   },
   {
     number: "03",
     icon: Wrench,
-    title: "Professional Installation",
+    title: "Execution & Installation",
     description:
-      "Certified technicians handle every aspect of installation with precision, speed, and strict quality standards.",
+      "We execute the work with close coordination, quality checks, and practical site management from start to finish.",
   },
   {
     number: "04",
     icon: HeartHandshake,
     title: "Ongoing Support",
     description:
-      "We stay with you long-term — monitoring performance, providing maintenance, and ensuring you get the most from your investment.",
+      "We remain available for follow-up, maintenance support, and post-handover coordination as project needs evolve.",
   },
 ];
 

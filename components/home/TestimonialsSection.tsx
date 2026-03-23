@@ -5,13 +5,13 @@ import SectionLabel from "@/components/SectionLabel";
 
 const testimonials = [
   {
-    quote: "Outstanding service, from initial consultation to final installation. Highly recommend for solar solutions!",
+    quote: "Outstanding service from initial consultation to final delivery. The team stayed organized, responsive, and committed throughout the project.",
     name: "Michael Johnson",
     title: "CEO Davis & Shirtcliff trading plc",
     delay: 0,
   },
   {
-    quote: "Extremely pleased with the professionalism, efficiency, and quality of the solar panel installation.",
+    quote: "We were impressed by the professionalism, speed, and quality of the site work. Communication was clear and the execution was dependable.",
     name: "Eslam Mohamed",
     title: "CFO at Alkan Communication & Information",
     delay: 120,

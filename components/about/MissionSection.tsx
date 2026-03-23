@@ -36,47 +36,75 @@ export default function MissionSection() {
                 color: "#0f172a",
               }}
             >
-              Founded in 2020
+              Built to Deliver Integrated Engineering Services
             </h2>
+            <p
+              className="text-base leading-relaxed mb-5"
+              style={{ color: "#4b5563", fontFamily: "var(--font-inter), sans-serif" }}
+            >
+              Founded in 2020, SAMZE Engineering provides end-to-end project
+              support across electromechanical work, civil work, water
+              drilling, firefighting systems, and related infrastructure
+              services. Our team works across planning, field execution,
+              installation, coordination, and handover to keep projects moving
+              with clarity and accountability.
+            </p>
             <p
               className="text-base leading-relaxed"
               style={{ color: "#4b5563", fontFamily: "var(--font-inter), sans-serif" }}
             >
-              SAMZE-TechSolutions specializes in innovative energy solutions, advancing solar technology and sustainable practices across Ethiopia. We prioritize quality, reliability, and customer satisfaction in every project we undertake.
+              We serve organizations, contractors, institutions, and private
+              clients that need practical engineering delivery backed by strong
+              workmanship, responsive communication, and a commitment to safety,
+              quality, and long-term reliability.
             </p>
           </div>
 
-          <div>
-            <h3
-              className="font-semibold mb-6 text-base"
-              style={{ color: "#0f172a", fontFamily: "var(--font-manrope), sans-serif" }}
-            >
-              Our Services
-            </h3>
-            <ul className="space-y-3">
-              {[
-                "Solar Panels",
-                "Energy Storage Systems",
-                "Monitoring Solutions",
-                "Solar Inverters",
-                "Water Drilling",
-                "Construction",
-                "Electromechanical Solutions",
-              ].map((service) => (
-                <li
-                  key={service}
-                  className="flex items-center gap-3 text-sm"
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              {
+                title: "Electromechanical Work",
+                description:
+                  "Installation, integration, testing, and commissioning for electrical and mechanical systems.",
+              },
+              {
+                title: "Civil Work",
+                description:
+                  "Concrete, trenching, supports, structural preparation, and site-ready construction execution.",
+              },
+              {
+                title: "Water Drilling",
+                description:
+                  "Field coordination and water access solutions for operational, agricultural, and community needs.",
+              },
+              {
+                title: "Firefighting Systems",
+                description:
+                  "Fire protection installation with compliant equipment setup, pipework, and readiness support.",
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                className="rounded p-6"
+                style={{
+                  background: "#f7f9fb",
+                  boxShadow: "0 8px 26px rgba(15,23,42,0.05)",
+                }}
+              >
+                <h3
+                  className="mb-3 font-semibold text-base"
+                  style={{ color: "#0f172a", fontFamily: "var(--font-manrope), sans-serif" }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed"
                   style={{ color: "#4b5563", fontFamily: "var(--font-inter), sans-serif" }}
                 >
-                  <span
-                    className="w-1.5 h-1.5 rounded-full shrink-0"
-                    style={{ background: "#f59e0b" }}
-                    aria-hidden="true"
-                  />
-                  {service}
-                </li>
-              ))}
-            </ul>
+                  {item.description}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </div>

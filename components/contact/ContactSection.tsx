@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, type FormEvent } from "react";
 import { MapPin, Phone, Mail, Send, CheckCircle } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 
@@ -14,8 +14,14 @@ const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+251 913 303 891",
-    href: "tel:+251913303891",
+    value: "+251930389133",
+    href: "tel:+251930389133",
+  },
+  {
+    icon: Phone,
+    label: "Alt. Phone",
+    value: "+251913175650",
+    href: "tel:+251913175650",
   },
   {
     icon: Mail,
@@ -47,7 +53,7 @@ export default function ContactSection() {
     return () => obs.disconnect();
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     // Simulate submission (no backend yet)
@@ -81,16 +87,16 @@ export default function ContactSection() {
                 color: "#0f172a",
               }}
             >
-              Let&apos;s Start Your{" "}
-              <span style={{ color: "#f59e0b" }}>Solar Journey</span>
+              Let&apos;s Talk About Your{" "}
+              <span style={{ color: "#f59e0b" }}>Next Project</span>
             </h2>
             <p
               className="text-base leading-relaxed mb-10"
               style={{ color: "#6b7280", fontFamily: "var(--font-inter), sans-serif" }}
             >
-              Whether you&apos;re ready to install solar panels or just have
-              questions, we&apos;re here to help. We offer free consultations
-              and custom quotes for every project.
+              Whether you need electromechanical work, civil work, water
+              drilling, firefighting systems, or general project support,
+              we&apos;re ready to discuss the scope and provide a tailored quote.
             </p>
 
             <div className="space-y-6">
@@ -254,15 +260,14 @@ export default function ContactSection() {
                           color: form.service ? "#0f172a" : "#9ca3af",
                           fontFamily: "var(--font-inter), sans-serif",
                         }}
-                      >
-                        <option value="">Select a service</option>
-                        <option value="solar-panels">Solar Panels</option>
-                        <option value="energy-storage">Energy Storage</option>
-                        <option value="inverters">Solar Inverters</option>
-                        <option value="monitoring">Monitoring Solutions</option>
-                        <option value="water-drilling">Water Drilling</option>
-                        <option value="other">Other</option>
-                      </select>
+                        >
+                          <option value="">Select a service</option>
+                          <option value="electromechanical">Electromechanical Work</option>
+                          <option value="civil-work">Civil Work</option>
+                          <option value="water-drilling">Water Drilling</option>
+                          <option value="firefighting-system">Firefighting System</option>
+                          <option value="other">Other</option>
+                        </select>
                     </div>
                   </div>
 
@@ -276,7 +281,7 @@ export default function ContactSection() {
                     <textarea
                       required
                       rows={5}
-                      placeholder="Tell us about your project, location, and energy needs..."
+                      placeholder="Tell us about your project scope, location, and timeline..."
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       className="w-full px-4 py-3 text-sm rounded outline-none transition-all duration-200 resize-none"

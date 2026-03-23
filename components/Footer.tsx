@@ -35,7 +35,8 @@ export default function Footer() {
               className="text-sm leading-relaxed"
               style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-inter), sans-serif" }}
             >
-              Electromechanical, Construction and Water Drilling Solutions across Ethiopia.
+              Electromechanical, civil, water drilling, and firefighting
+              solutions across Ethiopia.
             </p>
           </div>
 
@@ -79,13 +80,22 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={15} className="shrink-0" style={{ color: "#f59e0b" }} aria-hidden="true" />
-                <a
-                  href="tel:+25191330389133"
-                  className="text-sm transition-colors hover:text-white"
-                  style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-inter), sans-serif" }}
-                >
-                  +251 913 303 891
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a
+                    href="tel:+251930389133"
+                    className="text-sm transition-colors hover:text-white"
+                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-inter), sans-serif" }}
+                  >
+                    +251930389133
+                  </a>
+                  <a
+                    href="tel:+251913175650"
+                    className="text-sm transition-colors hover:text-white"
+                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-inter), sans-serif" }}
+                  >
+                    +251913175650
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={15} className="shrink-0" style={{ color: "#f59e0b" }} aria-hidden="true" />

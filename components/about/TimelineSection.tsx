@@ -4,12 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import SectionLabel from "@/components/SectionLabel";
 
 const milestones = [
-  { year: "2020", title: "Founding the Company" },
-  { year: "2021", title: "Product Development Begins" },
-  { year: "2023", title: "Market Expansion Initiated" },
-  { year: "2024", title: "Strategic Partnerships Formed" },
-  { year: "2025", title: "Industry Recognition Attained" },
-  { year: "2026", title: "Countrywide Market Domination" },
+  { year: "2020", title: "SAMZE Engineering is established in Addis Ababa." },
+  { year: "2021", title: "Project delivery expands across field installation and site execution." },
+  { year: "2023", title: "The company broadens into civil, electromechanical, and infrastructure support." },
+  { year: "2024", title: "Client and partner relationships grow with leading organizations and contractors." },
+  { year: "Today", title: "SAMZE continues delivering practical engineering solutions across multiple service lines in Ethiopia." },
 ];
 
 export default function TimelineSection() {

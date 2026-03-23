@@ -7,11 +7,14 @@ import { ArrowRight } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 
 const partners = [
-  { src: "/images/UNHCR.png", alt: "UNHCR" },
-  { src: "/images/safaricom.png", alt: "Safaricom" },
-  { src: "/images/alkan.png", alt: "Alkan" },
-  { src: "/images/infinityeth.png", alt: "InfinityETH" },
-  { src: "/images/mayorpng.png", alt: "Mayor" },
+  { name: "Safaricom Ethiopia", src: "/images/safaricom.png", width: 132 },
+  { name: "Alkan", src: "/images/alkan.png", width: 104 },
+  { name: "InfinityEth", src: "/images/infinityeth.png", width: 124 },
+  { name: "EEU" },
+  { name: "Inovies" },
+  { name: "Nokia" },
+  { name: "Ericson" },
+  { name: "Star Charge" },
 ];
 
 export default function AboutTeaser() {
@@ -61,7 +64,9 @@ export default function AboutTeaser() {
               className="text-base leading-relaxed mb-8"
               style={{ color: "#4b5563", fontFamily: "var(--font-inter), sans-serif" }}
             >
-              SAMZE-TechSolutions specializes in innovative energy solutions, advancing solar technology and sustainable practices across Ethiopia. We prioritize quality, reliability, and customer satisfaction in every project we undertake.
+              SAMZE Engineering delivers electromechanical work, civil work,
+              water drilling support, firefighting systems, and related field
+              infrastructure with a practical, quality-first approach.
             </p>
 
             <Link
@@ -86,20 +91,28 @@ export default function AboutTeaser() {
             >
               Trusted By
             </p>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6">
               {partners.map((p) => (
                 <div
-                  key={p.alt}
-                  className="flex items-center justify-center p-5 rounded"
-                  style={{ background: "#f2f4f6" }}
+                  key={p.name}
+                  className="flex items-center justify-center py-3"
                 >
-                  <Image
-                    src={p.src}
-                    alt={p.alt}
-                    width={100}
-                    height={48}
-                    className="object-contain h-9 w-auto grayscale hover:grayscale-0 transition-all duration-300"
-                  />
+                  {p.src ? (
+                    <Image
+                      src={p.src}
+                      alt={p.name}
+                      width={p.width ?? 108}
+                      height={42}
+                      className="h-9 w-auto object-contain"
+                    />
+                  ) : (
+                    <span
+                      className="text-sm font-semibold uppercase tracking-[0.2em]"
+                      style={{ color: "#0f172a", fontFamily: "var(--font-manrope), sans-serif" }}
+                    >
+                      {p.name}
+                    </span>
+                  )}
                 </div>
               ))}
             </div>

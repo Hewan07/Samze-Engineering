@@ -2,73 +2,73 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { Sun, Battery, Cpu, Activity, Check } from "lucide-react";
+import { Bolt, Building2, Droplets, ShieldCheck, Check } from "lucide-react";
 import SectionLabel from "@/components/SectionLabel";
 
 const services = [
   {
-    icon: Sun,
-    title: "Solar Panel Installation",
+    icon: Bolt,
+    title: "Electromechanical Work",
     description:
-      "We supply and install high-performance monocrystalline and polycrystalline solar panels for residential, commercial, and industrial clients across Ethiopia. Every installation is designed for maximum energy yield and longevity.",
+      "We handle integrated electromechanical scopes including equipment installation, cable routing, control panels, system integration, testing, and commissioning for field, industrial, and facility-based projects.",
     features: [
-      "Tier-1 manufacturer panels",
-      "25-year performance warranty",
-      "Certified installation engineers",
-      "Site assessment included",
-      "Grid-tie & off-grid systems",
-      "Residential to utility-scale",
+      "Electrical and mechanical coordination",
+      "Control panel and power system installation",
+      "Testing and commissioning support",
+      "Site troubleshooting and rectification",
+      "Installation supervision",
+      "Quality-focused execution",
+    ],
+    image: "/images/gallery/photo_2026-03-14_22-10-02.jpg",
+    label: "Core Service",
+  },
+  {
+    icon: Building2,
+    title: "Civil Work",
+    description:
+      "Our civil work capability supports engineering projects through site preparation, trenching, structural supports, concrete bases, and execution that keeps field operations on schedule.",
+    features: [
+      "Site preparation and layout",
+      "Concrete and foundation works",
+      "Trenching and duct routing",
+      "Structural base construction",
+      "Infrastructure support works",
+      "Field-ready finishing",
+    ],
+    image: "/images/gallery/photo_2026-03-14_22-09-30.jpg",
+    label: "Field Support",
+  },
+  {
+    icon: Droplets,
+    title: "Water Drilling",
+    description:
+      "We support water drilling projects with dependable field coordination, pumping system integration, and delivery planning for remote, agricultural, institutional, and utility needs.",
+    features: [
+      "Water access project support",
+      "Pump and infrastructure integration",
+      "Rural and remote site coordination",
+      "Installation planning assistance",
+      "Operational reliability focus",
+      "End-use readiness support",
+    ],
+    image: "/images/gallery/photo_2026-03-14_22-08-20.jpg",
+    label: "Utility Ready",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Firefighting System",
+    description:
+      "Our firefighting system work covers equipment installation, pipework coordination, system setup, and readiness support to help facilities meet safety and operational requirements.",
+    features: [
+      "Fire system pipework coordination",
+      "Safety equipment installation",
+      "Facility readiness support",
+      "Testing and handover assistance",
+      "Compliance-minded delivery",
+      "Maintenance-oriented setup",
     ],
     image: "/images/gallery/photo_2026-03-14_22-09-46.jpg",
-    label: "Most Popular",
-  },
-  {
-    icon: Battery,
-    title: "Energy Storage Systems",
-    description:
-      "Never lose power again. Our lithium-ion battery storage solutions ensure your home or business has reliable electricity around the clock, even during grid outages or low-sunlight periods.",
-    features: [
-      "Lithium-ion technology",
-      "Scalable capacity options",
-      "Remote monitoring & alerts",
-      "10-year storage warranty",
-      "Hybrid & off-grid configs",
-      "Smart energy management",
-    ],
-    image: "/images/gallery/photo_2026-03-14_22-09-34.jpg",
-    label: "Enterprise Ready",
-  },
-  {
-    icon: Cpu,
-    title: "Solar Inverters",
-    description:
-      "Our state-of-the-art inverter systems efficiently convert DC electricity from your solar panels into usable AC power. We offer string, micro, and hybrid inverters to match every system requirement.",
-    features: [
-      "String, micro & hybrid types",
-      "High conversion efficiency",
-      "Grid-tie protection built-in",
-      "Remote firmware updates",
-      "Real-time data export",
-      "Compatible with all panel brands",
-    ],
-    image: "/images/gallery/photo_2026-03-14_22-08-50.jpg",
-    label: "High Efficiency",
-  },
-  {
-    icon: Activity,
-    title: "Real-time Monitoring",
-    description:
-      "Stay in complete control of your energy system with our advanced monitoring dashboards. Track production, consumption, and performance from anywhere in the world via mobile or desktop.",
-    features: [
-      "Live production dashboards",
-      "Automated fault detection",
-      "Performance analytics & reports",
-      "Mobile app included",
-      "Email & SMS alerts",
-      "Historical data export",
-    ],
-    image: "/images/gallery/photo_2026-03-14_22-09-51.jpg",
-    label: "Smart Analytics",
+    label: "Safety Focused",
   },
 ];
 
@@ -181,8 +181,9 @@ export default function ServicesDetail() {
             className="mt-4 max-w-xl mx-auto text-base leading-relaxed"
             style={{ color: "#6b7280", fontFamily: "var(--font-inter), sans-serif" }}
           >
-            Whether you&apos;re a homeowner, a growing business, or a large
-            enterprise, we have the right solar solution for you.
+            From site preparation to installation and system handover, we
+            support practical project delivery across multiple engineering
+            service lines.
           </p>
         </div>
 

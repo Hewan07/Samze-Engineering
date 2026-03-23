@@ -42,8 +42,9 @@ export default function AboutHero() {
           className="max-w-xl text-base leading-relaxed"
           style={{ color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-inter), sans-serif" }}
         >
-          From a bold vision in 2020 to becoming Ethiopia&apos;s trusted
-          electromechanical and solar energy partner.
+          Since 2020, SAMZE Engineering has supported clients with
+          electromechanical, civil, firefighting, water drilling, and field
+          infrastructure solutions built for dependable delivery.
         </p>
       </div>
     </section>

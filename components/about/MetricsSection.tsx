@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const metrics = [
-  { value: "40%", label: "Market Share" },
-  { value: "20%", label: "Profit Margin" },
-  { value: "100%", label: "Customer Satisfaction" },
-  { value: "$25,000", label: "Annual Gross Revenue" },
+  { value: "6+", label: "Core service areas" },
+  { value: "360°", label: "Project support" },
+  { value: "24/7", label: "Field responsiveness" },
+  { value: "2020", label: "Year established" },
 ];
 
 export default function MetricsSection() {

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Manrope } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,15 +24,14 @@ export const metadata: Metadata = {
     template: "%s | SAMZE Engineering",
   },
   description:
-    "SAMZE Engineering specializes in electromechanical, construction, water drilling, and solar energy solutions across Ethiopia. Trusted by UNHCR and Safaricom.",
+    "SAMZE Engineering specializes in electromechanical work, civil work, water drilling, firefighting systems, and infrastructure delivery across Ethiopia.",
   keywords: [
     "electromechanical solutions Ethiopia",
     "water drilling Ethiopia",
-    "solar panels Addis Ababa",
+    "firefighting systems Ethiopia",
     "construction Ethiopia",
-    "solar energy Ethiopia",
-    "inverters Ethiopia",
-    "energy storage Ethiopia",
+    "civil work Addis Ababa",
+    "infrastructure delivery Ethiopia",
     "SAMZE Engineering",
   ],
   authors: [{ name: "SAMZE Engineering" }],
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: "SAMZE Engineering",
     title: "SAMZE Engineering — Electromechanical, Construction & Water Drilling",
     description:
-      "Electromechanical, construction, water drilling, and solar solutions across Ethiopia.",
+      "Electromechanical, civil, water drilling, and firefighting solutions across Ethiopia.",
     images: [{ url: "/logo - Full.png", width: 400, height: 120, alt: "SAMZE Engineering" }],
   },
   twitter: {
@@ -69,10 +69,10 @@ const structuredData = {
   name: "SAMZE Engineering",
   alternateName: "SAMZE-TechSolutions",
   description:
-    "Electromechanical, Construction and Water Drilling Solutions across Ethiopia.",
+    "Electromechanical, civil, water drilling, and firefighting solutions across Ethiopia.",
   url: "https://samze-techsolutions.com",
   logo: "https://samze-techsolutions.com/logo - Full.png",
-  telephone: "+25191330389133",
+  telephone: "+251930389133",
   email: "info@samze-techsolutions.com",
   address: {
     "@type": "PostalAddress",
@@ -85,7 +85,7 @@ const structuredData = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: Readonly<{ children: ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
       <head>
