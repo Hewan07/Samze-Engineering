@@ -6,7 +6,6 @@ const stats = [
   { value: "40%", label: "Market Share" },
   { value: "20%", label: "Profit Margin" },
   { value: "100%", label: "Customer Satisfaction" },
-  { value: "$25,000", label: "Annual Gross Revenue" },
 ];
 
 export default function StatsStrip() {
@@ -29,7 +28,7 @@ export default function StatsStrip() {
         style={{ background: "linear-gradient(90deg, transparent, rgba(245,158,11,0.4), transparent)" }}
       />
       <div ref={ref} className="max-w-7xl mx-auto px-6 lg:px-8 py-14">
-        <dl className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <dl className="grid grid-cols-3 lg:grid-cols-3 gap-8 lg:gap-12">
           {stats.map((s, i) => (
             <div
               key={s.label}
